@@ -4,6 +4,7 @@ from .models import clothe
 from .forms import ReviewForm, ClotheForm
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from .filters import ProductFilter
 
 # Create your views here.
 
@@ -11,10 +12,12 @@ from django.contrib.auth.decorators import login_required
 def all_Clothe(request):
 
     clothe_list = clothe.objects.all()
+    myfilter=ProductFilter(request.GET,queryset=clothe_list)
+    clothe_list=myfilter.qs
     paginator = Paginator(clothe_list, 2)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    contxt = {'clothes': clothe_list}
+    contxt = {'clothes': clothe_list, 'myfilter':myfilter}
     return render(request, "clothe/product_list.html", contxt)
 
 

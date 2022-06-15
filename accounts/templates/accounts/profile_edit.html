@@ -35,7 +35,7 @@
 								Your email address will not be published. Required fields are marked *
 							</p>
 
-							<form  method="POST">
+							<form  method="POST" enctype="multipart/form-data">
 								{% csrf_token %}
 											{% bootstrap_form userform %}
 											{% bootstrap_form profileform %}

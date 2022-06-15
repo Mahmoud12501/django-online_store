@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'contact',
     'about',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -134,6 +135,15 @@ STATIC_ROOT = "/var/www/example.com/static/"
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT=os.path.join(BASE_DIR,"media")
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='mahmoudmuhammed2001@gmail.com'
+EMAIL_HOST_PASSWORD='hwlxegvhuztzuyrf'
+EMAIL_USE_TLS=True
+EMAIL_USE_SSL=False
+EMAIL_PORT='587'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
