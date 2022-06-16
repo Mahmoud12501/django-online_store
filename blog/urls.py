@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.all_Blogs,name='blog'),
     path('add', views.Add_Blog, name='Add_Blog'),
     path('<str:slug>',views.blog_Detail,name='blog_detail'),
+    
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

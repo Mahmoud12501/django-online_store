@@ -1,5 +1,6 @@
 from django.shortcuts import render ,redirect
 from django.urls import reverse
+from shop.models import clothe
 from .models import blog
 from django.core.paginator import Paginator
 from .forms import ReviewForm,BlogForm
@@ -17,6 +18,9 @@ def all_Blogs(request):
     
 def blog_Detail(request,slug):
     blog_d=blog.objects.get(slug=slug)
+    clothe_list1 = clothe.objects.first()
+    clothe_list2 = clothe.objects.last()
+    clothe_list3 = clothe.objects.get(id=2)
     
     if request.method=='POST':
          form= ReviewForm(request.POST)
@@ -26,7 +30,7 @@ def blog_Detail(request,slug):
              myform.save()
     else:
         form= ReviewForm()
-    contxt={'detail':blog_d,'form':form}
+    contxt={'detail':blog_d,'form':form,'clothe': clothe_list1,'clothe2': clothe_list2,'clothe3': clothe_list3}
     return render(request,"blog/blog_detail.html",contxt)
 
 
@@ -45,3 +49,13 @@ def Add_Blog(request):
     else:
         form = BlogForm()
     return render(request, 'blog/add_blog.html', {"form": form})
+
+
+def Featured_Products(request):
+
+    clothe_list1 = clothe.objects.first()
+    clothe_list2 = clothe.objects.last()
+    clothe_list3 = clothe.objects.get(id=2)
+    
+    contxt = {'clothe': clothe_list1,'clothe2': clothe_list2,'clothe3': clothe_list3}
+    return render(request,"blog/blog_detail.html",contxt)
