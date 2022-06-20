@@ -4,15 +4,14 @@
 {% block content1 %}
 
   
-
   
 
-  <form method="post">
+  <form method="post" >
     {% csrf_token %}
     {% bootstrap_form form %}
     <input  class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" type="submit" value="login" />
     
-  </form>
+  </form> 
 
   {# Assumes you setup the password_reset view in your URLconf #}
   

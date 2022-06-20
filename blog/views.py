@@ -10,10 +10,13 @@ from django.contrib.auth.decorators import login_required
 def all_Blogs(request):
 
     blog_list=blog.objects.all()
+    clothe_list1 = clothe.objects.first()
+    clothe_list2 = clothe.objects.last()
+    clothe_list3 = clothe.objects.get(id=2)
     paginator = Paginator(blog_list, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    contxt={'blogs':page_obj}
+    contxt={'blogs':page_obj,'clothe': clothe_list1,'clothe2': clothe_list2,'clothe3': clothe_list3}
     return render(request,"blog/blog_list.html",contxt)
     
 def blog_Detail(request,slug):

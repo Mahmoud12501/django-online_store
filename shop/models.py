@@ -1,6 +1,8 @@
+from unicodedata import name
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from django.utils.html import format_html
 
 # Create your models here.
 size_type = (('S', 'S'),
@@ -14,13 +16,28 @@ def upload_img(instace,filename):
     imgname,ext=filename.split('.')
 
     return f"clothes/{instace.slug}.{ext}"
+class Size(models.Model):
+
+    name = models.CharField(max_length=20, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class Color(models.Model):
+    code = models.CharField(max_length=20, unique=True)
+    name=models.CharField(max_length=20)
+
+    def __str__(self):
+        # return format_html('<div style="background-color: {fcode};width:100px;height:100px"></div>'.format(fcode=self.code))
+        return self.name 
 
 class clothe(models.Model):
     owner=models.ForeignKey(User, related_name='pro_owner', on_delete=models.CASCADE)
     title = models.CharField(max_length=25)
     price = models.FloatField(max_length=5)
     Brief_summary = models.CharField(max_length=200)
-    size = models.CharField(max_length=3, choices=size_type)
+    sizes = models.ManyToManyField(Size)
+    colors = models.ManyToManyField(Color)
     #color
     descripion=models.TextField(max_length=800)
     Weight=models.FloatField(max_length=4)

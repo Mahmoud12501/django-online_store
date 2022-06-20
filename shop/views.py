@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.urls import reverse
 from django.shortcuts import redirect, render
 from .models import clothe
@@ -24,7 +25,7 @@ def all_Clothe(request):
 def clothe_Detail(request, slug):
     clothe_d = clothe.objects.get(slug=slug)
     clothe_list = clothe.objects.all()
-
+    
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form .is_valid:

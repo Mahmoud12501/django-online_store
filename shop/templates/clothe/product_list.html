@@ -257,13 +257,16 @@
             
 			<div class="row isotope-grid">
 				{% for clothe in clothes %}
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men" >
+				<div onclick="
+					window.location = `{% url 'clothe:product_detail' clothe.slug %}` 
+					" class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item { clothe.category}" >
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="{{clothe.image.url}}" alt="IMG-PRODUCT">
+							
+							<img src="{{clothe.image.url}}" alt="IMG-PRODUCT" height="400px" style="object-fit: cover;">
 
-							<a href="{% url 'clothe:product_detail' clothe.slug %}"
+							<a 
 								class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
@@ -298,8 +301,8 @@
 				
 				
 				
-			</div>
 			{% endfor %}
+			</div>
 
 			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
