@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 app_name='home'
 urlpatterns = [
     path('', views.home,name='home'),
+      path('h', views.home1,name='home1'),
    
     
 ]

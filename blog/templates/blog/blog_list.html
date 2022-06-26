@@ -73,22 +73,25 @@
 
 						{% endfor %}
 
-						<!-- Pagination -->
+						<!-- Pagination -->  
 						<div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
 							{% if blogs.has_previous %}
 							         <ul>
                                              <li><a href="?page={{ blogs.previous_page_number }}"> <i class="ti-angle-left"></i> </a></li>
                                         {% endif %}
 
-                                        {% for num in blogs.paginator.page_range %}
-                                         <li><a href="?page={{num}}"><span>{{num}}</span></a></li>
-                                        {% endfor %}
+                                        <!-- {% for num in blogs.paginator.page_range %} -->
+                                         <span ><a href="?page={{num}}"><span> {{num}} </span></a></span>
+                                        <!-- {% endfor %} -->
                                         {% if blogs.has_next %}
                                             <li><a href="?page={{ blogs.next_page_number }}"> <i class="ti-angle-right"></i> </a></li>
+											
                                         {% endif %}
 									 </ul>
 						</div>
+						
 					</div>
+					
 				</div>
 
 				<div class="col-md-4 col-lg-3 p-b-80">

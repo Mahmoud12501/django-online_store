@@ -328,7 +328,10 @@
 
 					{% for clothe in clotes %}
 					
-					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+					<div onclick="
+					window.location = `{% url 'clothe:product_detail' clothe.slug %}` 
+					"
+					class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
@@ -341,7 +344,7 @@
 
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
-									<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									<a href="{% url 'clothe:product_detail' clothe.slug %}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										{{ clothe.title }}
 									</a>
 
