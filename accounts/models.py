@@ -8,7 +8,7 @@ class Profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     city=models.ForeignKey("City", related_name='user_city', on_delete=models.CASCADE ,null=True,blank=True)
     phone_number=models.CharField(max_length=15)
-    profile_image=models.ImageField(upload_to='profile/')
+    profile_image=models.ImageField(upload_to='profile/',null=True,blank=True)
     def __str__(self) :
         return str(self.user)
 

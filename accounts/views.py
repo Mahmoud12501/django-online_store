@@ -29,7 +29,7 @@ def profile_edit(request):
     profile=Profile.objects.get(user=request.user)
     if request.method=='POST':
         userform=UserForm(request.POST,request.FILES,instance=request.user)
-        profileform=ProfileForm(request.POST,instance=profile)
+        profileform=ProfileForm(request.POST,request.FILES,instance=profile)
         if userform.is_valid() and profileform.is_valid():
             userform.save()
             myprofile=profileform.save(commit=False)

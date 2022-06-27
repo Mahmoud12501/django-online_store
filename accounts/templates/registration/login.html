@@ -19,7 +19,8 @@
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {% bootstrap_form form %}
-   <input  class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" type="submit" value="login"  /> 
+    <input  class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" type="submit" value="login"    />
+    <p><a href="{% url 'home:home' %}">home?</a></p>
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
 

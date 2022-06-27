@@ -19,4 +19,4 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model=Profile
-        fields=['city','phone_number','profile_image']
+        fields='__all__' 

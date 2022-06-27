@@ -35,10 +35,11 @@
 								Your email address will not be published. Required fields are marked *
 							</p>
 
-							<form  method="POST" enctype="multipart/form-data">
+							<form  method="POST" enctype= multipart/form-data>
 								{% csrf_token %}
 											{% bootstrap_form userform %}
 											{% bootstrap_form profileform %}
+											<p><a href="{% url 'password_change' %}">Change password?</a></p>
 											{% buttons %}
 											 
 											  

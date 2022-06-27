@@ -12,6 +12,20 @@ size_type = (('S', 'S'),
              ('2XL', '2XL'))
 
 
+Materials_type = (('Chiffon', 'Chiffon'),
+             ('Cotton', "Cotton"),
+             ("Crepe", "Crepe"),
+             ('Denim', 'Denim'),
+             ('Lace', 'Lace'),
+             ('Leather', 'Leather'),
+             ('Linen', 'Linen'),
+             ('Satin', 'Satin'),
+             ('Silk', 'Silk'),
+             ('Synthetics', 'Synthetics'),
+             ('Wool', 'Wool'),
+             )
+
+
 def upload_img(instace,filename):
     imgname,ext=filename.split('.')
 
@@ -42,6 +56,7 @@ class clothe(models.Model):
     descripion=models.TextField(max_length=800)
     Weight=models.FloatField(max_length=4)
     Dimensions=models.CharField(max_length=18)
+    Materials_name=models.CharField(max_length=20,choices=Materials_type)
     Materials=models.FloatField(max_length=2)
     puplish_at=models.DateField(auto_now=True)
     category=models.ForeignKey('Category',on_delete= models.CASCADE)
